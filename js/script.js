@@ -12,7 +12,7 @@ const CONFIG = {
     { src: "assets/photos/photo4.jpg", caption: "You and me, always" },
     { src: "assets/photos/photo5.jpg", caption: "Still choosing you, every single day" }
   ],
-  messageTitle: "To my love ❤️",
+  messageTitle: "To my Kuttu ❤️",
   message:
 `To my love, to my everything who has been with me since we met, who has many reasons to leave but still chooses me every single time, most handsome man in the world, the hardworking one who takes care of him and his family as well, wishing you joy and happiness and everything you prayed for. Hope we celebrate our birthdays together happily ever after.
 
