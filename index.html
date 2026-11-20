@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>For My Love 💖</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <audio id="bgm" loop preload="auto"></audio>
+  <button id="muteBtn" class="mute hidden" aria-label="Toggle music">🔊</button>
+  <div id="heartRain" aria-hidden="true"></div>
+
+  <!-- Screen 1: Heart -->
+  <section id="screen-heart" class="screen active">
+    <button id="bigHeart" class="big-heart" aria-label="Tap the heart">
+      <svg viewBox="0 0 32 29" xmlns="http://www.w3.org/2000/svg">
+        <path d="M23.6 0c-2.9 0-5.4 1.5-7.6 4.2C13.8 1.5 11.3 0 8.4 0 3.8 0 0 3.8 0 8.5c0 9.7 14.3 18.5 16 20.5 1.7-2 16-10.8 16-20.5C32 3.8 28.2 0 23.6 0z"/>
+      </svg>
+    </button>
+    <p class="tap-text">Tap the heart</p>
+  </section>
+
+  <!-- Screen 2: Photos -->
+  <section id="screen-photos" class="screen">
+    <div class="photo-stage">
+      <div id="slides"></div>
+      <div class="photo-vignette"></div>
+      <p id="caption" class="caption"></p>
+      <div id="dots" class="dots"></div>
+    </div>
+    <button id="nextPhotos" class="next-btn hidden">Next 💌</button>
+  </section>
+
+  <!-- Screen 3: Message -->
+  <section id="screen-message" class="screen">
+    <div class="letter">
+      <h2 class="script" id="msgTitle"></h2>
+      <p id="msgText" class="msg-text"></p>
+    </div>
+    <button id="nextMessage" class="next-btn hidden">Next 🎂</button>
+  </section>
+
+  <!-- Screen 4: Birthday -->
+  <section id="screen-birthday" class="screen">
+    <canvas id="confetti"></canvas>
+    <div class="bday">
+      <p class="bday-small">It's your day, my love</p>
+      <h1 class="script bday-title">Happy Birthday</h1>
+      <h2 class="script bday-name" id="bdayName"></h2>
+      <p class="bday-wish">
+        May every dream you carry come true, and may every day ahead be as beautiful as you make mine.
+        You are my favorite person, my safe place, my forever.
+      </p>
+      <p class="bday-sign">Forever yours, <span id="herName"></span> ❤️</p>
+      <button id="replay" class="ghost-btn">Watch again</button>
+    </div>
+  </section>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
