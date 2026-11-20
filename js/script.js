@@ -6,11 +6,11 @@ const CONFIG = {
   slideSeconds: 4.5,           // seconds each photo stays
   typingSpeed: 38,             // ms per letter in the message
   photos: [
-    { src: "assets/photos/photo1.png", caption: "Home is wherever you are" },
-    { src: "assets/photos/photo2.png", caption: "My favorite smile in the world" },
-    { src: "assets/photos/photo3.png", caption: "Every night feels like magic with you" },
-    { src: "assets/photos/photo4.png", caption: "You and me, always" },
-    { src: "assets/photos/photo5.png", caption: "Still choosing you, every single day" }
+    { src: "assets/photos/photo1.jpg", caption: "Home is wherever you are" },
+    { src: "assets/photos/photo2.jpg", caption: "My favorite smile in the world" },
+    { src: "assets/photos/photo3.jpg", caption: "Every night feels like magic with you" },
+    { src: "assets/photos/photo4.jpg", caption: "You and me, always" },
+    { src: "assets/photos/photo5.jpg", caption: "Still choosing you, every single day" }
   ],
   messageTitle: "To my love ❤️",
   message:
@@ -24,6 +24,14 @@ const $ = (id) => document.getElementById(id);
 const audio = $("bgm");
 audio.src = CONFIG.musicFile;
 audio.volume = 0.7;
+
+/* Preload photos while the heart screen is showing so they appear instantly */
+const preloaded = CONFIG.photos.map(p => new Promise(res => {
+  const img = new Image();
+  img.onload = img.onerror = () => res();
+  img.src = p.src;
+}));
+audio.load();
 
 let rainTimer = null, slideTimer = null, typeTimer = null, confettiRAF = null;
 
@@ -57,7 +65,9 @@ $("bigHeart").addEventListener("click", () => {
   $("muteBtn").classList.remove("hidden");
   $("bigHeart").classList.add("burst");
   startHeartRain(250);
-  setTimeout(() => { show("screen-photos"); startSlides(); }, 800);
+  const wait = new Promise(r => setTimeout(r, 800));
+  Promise.race([Promise.all([wait, ...preloaded]), new Promise(r => setTimeout(r, 6000))])
+    .then(() => { show("screen-photos"); startSlides(); });
 });
 
 /* ---------- Photo slideshow ---------- */
